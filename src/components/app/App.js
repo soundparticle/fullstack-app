@@ -1,6 +1,6 @@
 import React,  { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router';
-import Header from './Header';
+import Header from '../home/Header';
 import Home from '../home/Home';
 import Artists from '../artists/Artists';
 import ArtistDetail from '../artists/ArtistDetail';
@@ -15,9 +15,9 @@ export default class App extends Component {
     return (
       <Router>
         <div>
-        <header>
+          <header>
             <Header onSearch={this.handleSearch}/>
-        </header>
+          </header>
           <Link to= "/"><img src={require('../../assets/____________.jpg')} id="logo"/></Link><header className="header"></header>
           
           <nav>
@@ -32,10 +32,10 @@ export default class App extends Component {
               <Route exact path="/" component={Home}/>
               {/* <Route path="/about" component={About}/> */}
               <Route exact path="/artists" component={Artists}/>
-              <Route exact path="/search" component={Results}/>
+              <Route exact path="/search" component={Favorites}/>
               <Route path="/artists/:id" render={({ match }) => {
-              <Redirect to="/"/>
-                return <AlbumDetail artistId={match.params.id} match={match}/>;
+                <Redirect to="/"/>;
+                return <ArtistDetail artistId={match.params.id} match={match}/>;
               }}/>
             </Switch>
           </main>
@@ -46,5 +46,3 @@ export default class App extends Component {
   }
 
 }
-
-export default App;
