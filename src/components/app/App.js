@@ -1,14 +1,15 @@
 import React,  { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router';
-import Header from '../home/Header';
+import Header from '../Header';
 import Home from '../home/Home';
-import Artists from '../artists/Artists';
+// import Artists from '../artists/Artists';
+import Results from '../artists/Results';
 import ArtistDetail from '../artists/ArtistDetail';
-import Favorites from './favorites/Favorites';
+import Favorites from '../favorites/Favorites';
 
 // import './App.css';
 
-export default class App extends Component {
+class App extends Component {
 
   render() {
 
@@ -18,7 +19,7 @@ export default class App extends Component {
           <header>
             <Header onSearch={this.handleSearch}/>
           </header>
-          <Link to= "/"><img src={require('../../assets/____________.jpg')} id="logo"/></Link><header className="header"></header>
+          {/* <Link to= "/"><img src={require('../../assets/____________.jpg')} id="logo"/></Link><header className="header"></header> */}
           
           <nav>
             <ul>
@@ -31,12 +32,10 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/" component={Home}/>
               {/* <Route path="/about" component={About}/> */}
-              <Route exact path="/artists" component={Artists}/>
-              <Route exact path="/search" component={Favorites}/>
-              <Route path="/artists/:id" render={({ match }) => {
-                <Redirect to="/"/>;
-                return <ArtistDetail artistId={match.params.id} match={match}/>;
-              }}/>
+              <Route exact path="/favorites" component={Favorites}/>
+              <Route exact path="/search" component={Results}/>
+              <Route exact path="/artists/:id" component={ArtistDetail}/>
+              <Redirect to="/"/>
             </Switch>
           </main>
           <footer><p></p></footer>
@@ -46,3 +45,5 @@ export default class App extends Component {
   }
 
 }
+
+export default App;
