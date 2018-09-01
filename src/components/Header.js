@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Search from './search/Search';
 import { Link, Route } from 'react-router-dom';
 // import logo from '../assets/logo.png';
-import styles from './Header.css';
+// import styles from './Header.css';
 
 class Header extends Component {
 
   render() {
 
     return (
-      <div className={styles.header}>  
+      <div>  
 
         <section className="header-container">
           <div>
