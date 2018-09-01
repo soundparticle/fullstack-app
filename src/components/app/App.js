@@ -38,7 +38,7 @@ class App extends Component {
               <Redirect to="/"/>
             </Switch>
           </main>
-          <footer><p></p></footer>
+          <footer><p>&copy; 2018 Antreo and Mario Discodogs.</p></footer>
         </div>
       </Router>
     );
