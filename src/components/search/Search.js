@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 class Search extends Component {
 
   state = {
-    artist: '',
-    title: ''
+    title: '',
+    artist: ''
   };
 
   static propTypes = {
@@ -17,19 +17,21 @@ class Search extends Component {
 
   componentDidMount() {
     const { location } = this.props;
-    const { artist = '', title = '' } = qs.parse(location.artist, location.title);
-    this.setState({ artist, title });
+    const { title = '' } = qs.parse(location.title);
+    const { artist = '' } = qs.parse(location.artist);
+    this.setState({ title, artist });
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    const { artist, title } = this.state;
-    if(!artist && title) return;
+    const { title, artist } = this.state;
+    if(!title && artist) return;
     
     const { history } = this.props;
     history.push({
       pathname: '/search',
-      search: qs.stringify({ artist, title, page: 1 })
+      title: qs.stringify({ title }),
+      artist: qs.stringify({ artist })
     });
   };
 
@@ -38,17 +40,17 @@ class Search extends Component {
   };
   
   render() {
-    const { artist, title } = this.state;
+    const { title, artist } = this.state;
 
     return (
       <form onSubmit={event => this.handleSubmit(event)}>
         <label>
           Search for Music: &nbsp;
-          <p>Artist:
-            <input name={artist} value={artist} onChange={this.handleChangeSearch}/>
+          <p>Title:
+            <input name="title" value={title} onChange={this.handleChangeSearch}/>
           </p>
-          <p>Album Title:
-            <input name={title} value={title} onChange={this.handleChangeSearch}/>
+          <p>Artist:
+            <input name="artist" value={artist} onChange={this.handleChangeSearch}/>
           </p>
         </label>
         <button>Search</button>

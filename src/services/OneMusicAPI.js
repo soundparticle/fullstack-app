@@ -19,11 +19,10 @@ const getUrl = url => {
     });
 };
 
-export function search({ search }, { page }) {
-  const searchTerm = `&s=${search}`;
-  const paging = `&page=${page}`;
+export function search({ title }, { artist }) {
+  const searchTerm = `&title=${title}&artist${artist}`;
 
-  return get(`${EVERYTHING_URL}${searchTerm}${paging}`);
+  return get(`${EVERYTHING_URL}${searchTerm}`);
 }
 
 export function getArtist(id) {
