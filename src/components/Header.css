@@ -1,0 +1,49 @@
+// :local(.header) {
+//   background: rgb(94, 237, 182);
+
+//   html, body {
+//     margin: 0;
+//    }
+  
+//   .header-container {
+//     padding: 50px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+    
+//     // .logo {
+//     //   display: flex;
+//     //   align-items: center;
+//     // }
+    
+//     > h1 {
+//       font-size: 14pt;
+//       color: white;
+//       text-shadow: 1px 1px 5px black;
+//     }
+//   }
+  
+//   .search-container {
+//     padding: 1px 0;
+//   }
+  
+//   nav {
+//     ul {
+//       margin: 0;
+//       padding: 0;
+      
+//     }
+    
+//     li {
+//       font-family: sans-serif;
+//       background-color: lightcyan;
+//       list-style: none;
+//       display: inline-block;
+//       margin-left: 5px;
+//       border-radius: 25px;
+//       border: 1px solid  rgb(0, 63, 139);;
+//       padding: 10px; 
+      
+//     }
+//   }
+// }

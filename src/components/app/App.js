@@ -21,12 +21,12 @@ class App extends Component {
           </header>
           {/* <Link to= "/"><img src={require('../../assets/____________.jpg')} id="logo"/></Link><header className="header"></header> */}
           
-          {/* <nav>
-            <ul>
+          <nav>
+            {/* <ul>
               <li><Link to= "/">Home Page</Link></li>
               <li><Link to="/favorites">Favorites</Link></li>
-            </ul>
-          </nav> */}
+            </ul> */}
+          </nav>
 
           <main>
             <Switch>
