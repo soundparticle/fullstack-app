@@ -1,35 +1,9 @@
-import { get } from './request';
-const API_KEY = '2156e816';
-const API_QUERY = `apikey=${API_KEY}`;
-const BASE_URL = 'https://www.omdbapi.com';
-const EVERYTHING_URL = `${BASE_URL}/?${API_QUERY}`;
+import { get, post } from './request';
 
-const getUrl = url => {
-  const json = window.localStorage.getItem(url);
-  if(json) {
-    const response = JSON.parse(json);
-    return Promise.resolve(response);
-  }
-
-  return get(url)
-    .then(response => {
-      window.localStorage.setItem(url, JSON.stringify(response));
-      return response;
-    });
-};
-
-export function search({ search }, { page }) {
-  const searchTerm = `&s=${search}`;
-  const paging = `&page=${page}`;
-
-  return get(`${EVERYTHING_URL}${searchTerm}${paging}`);
-}
-
-export function getArtist(id) {
-  if(id) {
-    return getUrl(`${EVERYTHING_URL}&i=${id}`);
-  }
-  else {
-    return getUrl(EVERYTHING_URL);
-  }
-}
+const URL = 'http://localhost:3000/api';
+const ARTISTS_URL = `${URL}/artists`;
+// TODO update route names to match our API
+export const getAllArtists = () => get(ARTISTS_URL);
+export const getArtist = (id) => get(`${ARTISTS_URL}/${id}`);
+export const postArtist = (artist) => post(ARTISTS_URL, artist);
+export const getImages = (albumId) => get(`${ARTISTS_URL}/${albumId}/images`);

@@ -1,5 +1,5 @@
 import React,  { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Header from '../Header';
 import Home from '../home/Home';
 // import Artists from '../artists/Artists';
@@ -21,20 +21,19 @@ class App extends Component {
           </header>
           {/* <Link to= "/"><img src={require('../../assets/____________.jpg')} id="logo"/></Link><header className="header"></header> */}
           
-          <nav>
+          {/* <nav>
             <ul>
               <li><Link to= "/">Home Page</Link></li>
               <li><Link to="/favorites">Favorites</Link></li>
-              {/* <li><a>Images</a></li> */}
             </ul>
-          </nav>
+          </nav> */}
+
           <main>
             <Switch>
               <Route exact path="/" component={Home}/>
-              {/* <Route path="/about" component={About}/> */}
               <Route exact path="/favorites" component={Favorites}/>
               <Route exact path="/search" component={Results}/>
-              <Route exact path="/artists/:id" component={ArtistDetail}/>
+              <Route exact path="/artists/:id" component={ArtistDetail}/> 
               <Redirect to="/"/>
             </Switch>
           </main>
@@ -43,7 +42,6 @@ class App extends Component {
       </Router>
     );
   }
-
 }
 
 export default App;
