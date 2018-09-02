@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from './search/Search';
 import { Link, Route } from 'react-router-dom';
-// import logo from '../assets/logo.png';
+import logo from '../assets/disco-dog.png';
 // import styles from './Header.css';
 
 class Header extends Component {
@@ -12,7 +12,7 @@ class Header extends Component {
       <div>  
 
         <section className="header-container">
-          <div>
+          <div className="logo"><img src={logo}/>
             <h1>Artists</h1>
           </div> 
           <nav>
