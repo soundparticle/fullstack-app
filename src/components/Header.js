@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import Search from './search/Search';
 import { Link, Route } from 'react-router-dom';
-import logo from '../assets/discodog.png';
-// import styles from './Header.css';
+import discodog from '../assets/discodog.png';
+import styles from '../components/Header.css';
 
 class Header extends Component {
 
   render() {
 
     return (
-      <div>  
+      <div className={styles.header}>  
 
         <section className="header-container">
-          <div className="logo"><img src={logo}/>
+          <div className="discodog"><img src={discodog}/>
             <h1>Artists</h1>
           </div> 
           <nav>

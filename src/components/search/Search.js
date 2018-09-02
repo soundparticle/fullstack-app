@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import qs from 'query-string';
 import PropTypes from 'prop-types';
-// import './Search.css';
+import './Search.css';
 
 class Search extends Component {
 
@@ -40,7 +40,7 @@ class Search extends Component {
     const { search } = this.state;
 
     return (
-      <form onSubmit={event => this.handleSubmit(event)}>
+      <form className="search-form" onSubmit={event => this.handleSubmit(event)}>
         <label>
           Search For: &nbsp;
           <input name={search} value={search} onChange={this.handleChangeSearch}/>
