@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import Search from './search/Search';
 import { Link, Route } from 'react-router-dom';
-import logo from '../assets/discodog.png';
-// import styles from './Header.css';
+// import logo from '../assets/logo.png';
+import styles from './Header.css';
 
 class Header extends Component {
 
   render() {
 
     return (
-      <div>  
+      <div className={styles.header}>  
 
         <section className="header-container">
-          <div className="logo"><img src={logo}/>
+          <div>
             <h1>Artists</h1>
           </div> 
           <nav>
@@ -24,7 +24,7 @@ class Header extends Component {
                 <Link to="/favorites">Favorites</Link>
               </li>
               <li>
-                <Link to="/search">Search Music</Link>
+                <Link to="/search">Search Artists</Link>
               </li>
             </ul>
           </nav>
