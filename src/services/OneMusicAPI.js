@@ -3,7 +3,7 @@ import { get } from './request';
 const API_KEY = 'b7cc8c95730e9470df723ebf08a792d5';
 const API_QUERY = `user_key=${API_KEY}`;
 const BASE_URL = 'http://api.onemusicapi.com';
-const EVERYTHING_URL = `${BASE_URL}/?${API_QUERY}`;
+const EVERYTHING_URL = `${BASE_URL}20151208/release?${API_QUERY}`;
 
 const getUrl = url => {
   const json = window.localStorage.getItem(url);

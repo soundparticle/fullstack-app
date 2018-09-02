@@ -16,7 +16,7 @@ export default class Artist extends Component {
 // check jsx img tags for proper source
     return (
       <li>
-        <Link to={`/artists/${id}`}>
+        <Link to={`/artist/${id}`}>
           {releases_url !== 'N/A'
             ? <img src={images.type.primary}/>
             : <img src={discodog}/>}

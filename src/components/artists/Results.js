@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import qs from 'query-string';
 import Artists from './Artists';
 import Paging from '../paging/Paging';
-import { search as searchArtists } from '../../services/OneMusicAPI';
+import { search as searchArtist } from '../../services/OneMusicAPI';
 
 class Results extends Component {
   
   state = {
-    artists: null,
+    artist: null,
     totalResults: 0,
     perPage: 10,
     loading: false,
@@ -22,7 +22,7 @@ class Results extends Component {
   };
 
   componentDidMount() {
-    this.searchArtists();
+    this.searchArtist();
   }
 
   componentDidUpdate({ location }) {
@@ -37,7 +37,7 @@ class Results extends Component {
     return search;
   }
   // do we need paging?
-  searchArtists() {
+  searchArtist() {
     const { perPage } = this.state;
     const page = this.searchTerm;
     const search = this.searchTerm;
@@ -48,10 +48,10 @@ class Results extends Component {
       error: null
     });
 
-    searchArtists({ search, }, { page, perPage })
+    searchArtist({ search, }, { page, perPage })
       .then(
         ({ Search, totalResults }) => {
-          this.setState({ artists: Search, totalResults, page });
+          this.setState({ artist: Search, totalResults, page });
         },
         err => {
           this.setState({ error: err.message });
@@ -64,7 +64,7 @@ class Results extends Component {
 
   render() {
 
-    const { artists, loading, error } = this.state;
+    const { artist, loading, error } = this.state;
     const { perPage, totalResults } = this.state;
     const { searchTerm } = this;
 
@@ -89,8 +89,8 @@ class Results extends Component {
             </Fragment>
         }
         <div>
-          {artists
-            ? <Artists artists={artists}/>
+          {artist
+            ? <Artists artist={artist}/>
             : <p>Please enter your search,</p>
           }
         </div>
