@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from './search/Search';
 import { Link, Route } from 'react-router-dom';
-import logo from '../assets/disco-dog.png';
+import logo from '../assets/discodog.png';
 // import styles from './Header.css';
 
 class Header extends Component {
