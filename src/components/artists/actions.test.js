@@ -9,7 +9,7 @@ import { getAllArtists } from '../../services/api';
 
 describe('Album Actions', () => {
   
-  it('Loads Albums', async() => {
+  it('Loads Artists', async() => {
     const dispatch = jest.fn();
     const getState = jest.fn();
     await loadArtists()(dispatch, getState);
