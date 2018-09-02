@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import qs from 'query-string';
 import Artists from './Artists';
 import Paging from '../paging/Paging';
-import { search as searchArtists } from '../../services/api';
+import { search as searchArtists } from '../../services/OneMusicAPI';
 
 class Results extends Component {
   
