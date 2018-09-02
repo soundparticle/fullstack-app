@@ -1,11 +1,11 @@
 import React,  { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Header from '../Header';
 import Home from '../home/Home';
 // import Artists from '../artists/Artists';
-// import Results from '../artists/Results';
-// import ArtistDetail from '../artists/ArtistDetail';
-// import Favorites from '../favorites/Favorites';
+import Results from '../artists/Results';
+import ArtistDetail from '../artists/ArtistDetail';
+import Favorites from '../favorites/Favorites';
 
 // import './App.css';
 
@@ -31,9 +31,9 @@ class App extends Component {
           <main>
             <Switch>
               <Route exact path="/" component={Home}/>
-              {/* <Route exact path="/favorites" component={Favorites}/> */}
-              {/* <Route exact path="/search" component={Results}/>
-              <Route exact path="/artists/:id" component={ArtistDetail}/> */}
+              <Route exact path="/favorites" component={Favorites}/>
+              <Route exact path="/search" component={Results}/>
+              <Route exact path="/artists/:id" component={ArtistDetail}/> 
               <Redirect to="/"/>
             </Switch>
           </main>
