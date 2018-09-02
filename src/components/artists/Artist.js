@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 // import styles from './artist.css';
-import logo from '../../assets/logo.png';
+import discodog from '../../assets/discodog.png';
 
 export default class Artist extends Component {
 
@@ -13,13 +13,13 @@ export default class Artist extends Component {
   render() {
     const { artist } = this.props;
     const { name, profile, releases_url, images, id } = artist;
-
+// check jsx img tags for proper source
     return (
       <li>
         <Link to={`/artists/${id}`}>
           {releases_url !== 'N/A'
             ? <img src={images.type.primary}/>
-            : <img src={logo}/>}
+            : <img src={discodog}/>}
           <p><strong>{name}</strong>({profile})</p>
         </Link>
       </li>
