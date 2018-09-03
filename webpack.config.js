@@ -28,6 +28,9 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/
       },
+
+
+
       {
         test: /\.css$/,
         use: [
@@ -52,7 +55,7 @@ module.exports = {
         test: /\.(jpg|png|svg)$/,
         use: {
           loader: 'url-loader',
-          options: { limit: 5000 },
+          options: { limit: 1000 },
         },
       }
     ]
