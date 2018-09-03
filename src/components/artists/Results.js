@@ -28,7 +28,25 @@ class Results extends Component {
   componentDidUpdate({ location }) {
     const { page: oldPage } = qs.parse(location.search);
     const { search: oldSearch } = qs.parse(location.search);
-    if(oldSearch !== this.SearchTerm || oldPage !== this.searchPage) this.searchArtist();
+    if(oldSearch !== this.searchTerm || oldPage !== this.searchPage) this.searchArtist();
+  }
+
+  handlePage = paging => {
+    this.setState(paging, () => {
+      const { perPage } = this.state;
+      const search = this.searchTerm;
+      const { page } = paging;
+      const { history } = this.props;
+      history.push({
+        search: qs.stringify({ search, page, perPage })
+      });
+    });
+  };
+
+  get searchPage() {
+    const { location } = this.props;
+    const { page } = qs.parse(location.search);
+    return page;
   }
 
   get searchTerm() {
@@ -36,22 +54,22 @@ class Results extends Component {
     const { search } = qs.parse(location.search);
     return search;
   }
-  // do we need paging?
+
   searchArtist() {
     const { perPage } = this.state;
-    const page = this.searchTerm;
+    const page = parseInt(this.searchPage);
     const search = this.searchTerm;
     if(!search) return;
-    
-    this.setState({ 
+
+    this.setState({
       loading: true,
       error: null
     });
-
-    searchArtist({ search, }, { page, perPage })
+    
+    searchArtist({ search }, { page, perPage })
       .then(
         ({ Search, totalResults }) => {
-          this.setState({ artist: Search, totalResults, page });
+          this.setState({ artists: Search, totalResults, page });
         },
         err => {
           this.setState({ error: err.message });
