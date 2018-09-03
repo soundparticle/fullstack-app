@@ -5,13 +5,13 @@ const FAVORITES_URL = `${URL}/favorites`;
 
 const getFavoriteUrl = artist_id => `${FAVORITES_URL}/artists/${artist_id}.json`;
 
-export const addFavorite = ({ id, name, profile, images }) => {
+export const addFavorite = ({ id, title, year, cover_image }) => {
   const url = getFavoriteUrl(id);
   return put(url, {
     id,
-    name,
-    profile,
-    images,
+    title,
+    year,
+    cover_image,
   });
 };
 

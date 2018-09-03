@@ -12,15 +12,15 @@ export default class Artist extends Component {
 
   render() {
     const { artist } = this.props;
-    const { name, profile, releases_url, images, id } = artist;
+    const { title, year, cover_image, id } = artist;
 // check jsx img tags for proper source
     return (
       <li>
-        <Link to={`/artist/${id}`}>
-          {releases_url !== 'N/A'
-            ? <img src={images.type.primary}/>
+        <Link to={`/album/${id}`}>
+          {cover_image !== 'N/A'
+            ? <img src={cover_image}/>
             : <img src={discodog}/>}
-          <p><strong>{name}</strong>({profile})</p>
+          <p><strong>{title}</strong>({year})</p>
         </Link>
       </li>
     ); 
