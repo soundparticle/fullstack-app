@@ -1,11 +1,11 @@
-jest.mock('../../services/api', () => ({
+jest.mock('../../services/DiscogsApi', () => ({
   getAllArtists: jest.fn(),
   // postAlbum: jest.fn()
 }));
 
 import { loadArtists } from './actions';
 import { ARTISTS_LOAD } from './reducers';
-import { getAllArtists } from '../../services/api';
+import { getAllArtists } from '../../services/DiscogsApi';
 
 describe('Album Actions', () => {
   

@@ -1,9 +1,9 @@
 import { put, get, del } from './request';
 
-const URL = 'http://localhost:3000/api';
+const URL = 'http://localhost:3000/DiscogsApi';
 const FAVORITES_URL = `${URL}/favorites`;
 
-const getFavoriteUrl = id => `${FAVORITES_URL}/id-${id}.json`;
+const getFavoriteUrl = artist_id => `${FAVORITES_URL}/artists/${artist_id}.json`;
 
 export const addFavorite = ({ id, name, profile, images }) => {
   const url = getFavoriteUrl(id);
