@@ -6,49 +6,51 @@ import PropTypes from 'prop-types';
 class Search extends Component {
 
   state = {
-    search: ''
+    title: '',
+    artist: ''
   };
 
   static propTypes = {
     history: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
   };
 
   componentDidMount() {
     const { location } = this.props;
-    const { search = '' } = qs.parse(location.search);
-    this.setState({ search });
+    const { title = '' } = qs.parse(location.title);
+    const { artist = '' } = qs.parse(location.artist);
+    this.setState({ title, artist });
   }
-  
+
   handleSubmit = event => {
     event.preventDefault();
-    const { search } = this.state;
-    if(!search) return;
-
+    const { title, artist } = this.state;
+    if(!title && artist) return;
+    
     const { history } = this.props;
     history.push({
       pathname: '/search',
-      search: qs.stringify({ search, page: 1 })
+      title: qs.stringify({ title }),
+      artist: qs.stringify({ artist })
     });
   };
 
-  handleChangeSearch = ({ target }) => {
-    this.setState({ search: target.value });
+  handleSearch = ({ target }) => {
+    this.setState({ [target.name]: target.value });
   };
-
   
   render() {
-    const { search } = this.state;
+    const { title, artist } = this.state;
 
     return (
       <form onSubmit={event => this.handleSubmit(event)}>
         <label>
           Search for Music: &nbsp;
           <p>Title:
-            <input name="title" value={search} onChange={this.handleSearch}/>
+            <input name="title" value={title} onChange={this.handleSearch}/>
           </p>
           <p>Artist:
-            <input name="artist" value={search} onChange={this.handleSearch}/>
+            <input name="artist" value={artist} onChange={this.handleSearch}/>
           </p>
         </label>
         <button>Search</button>

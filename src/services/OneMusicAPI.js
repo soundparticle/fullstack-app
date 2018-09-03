@@ -1,9 +1,8 @@
 import { get } from './request';
-
 const API_KEY = 'b7cc8c95730e9470df723ebf08a792d5';
 const API_QUERY = `user_key=${API_KEY}`;
 const BASE_URL = 'http://api.onemusicapi.com';
-const EVERYTHING_URL = `${BASE_URL}20151208/release?${API_QUERY}`;
+const EVERYTHING_URL = `${BASE_URL}/20151208/artist?${API_QUERY}`;
 
 const getUrl = url => {
   const json = window.localStorage.getItem(url);
@@ -19,18 +18,17 @@ const getUrl = url => {
     });
 };
 
-export function search({ title }, { artist }) {
-  const searchTerm = `&title=${title}&artist${artist}`;
+export function search({ search }) {
+  const searchTerm = `&called=${search}`;
 
   return get(`${EVERYTHING_URL}${searchTerm}`);
 }
 
-export function getArtist(id) {
-  if(id) {
-    return getUrl(`${EVERYTHING_URL}&=${id}`);
+export function getMovies(artist) {
+  if(artist) {
+    return getUrl(`${EVERYTHING_URL}&called=${artist}`);
   }
   else {
     return getUrl(EVERYTHING_URL);
   }
 }
-
