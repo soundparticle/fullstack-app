@@ -32,7 +32,7 @@ class Search extends Component {
     });
   };
 
-  handleSearch = ({ target }) => {
+  handleChangeSearch = ({ target }) => {
     this.setState({ search: target.value });
   };
 
@@ -43,7 +43,7 @@ class Search extends Component {
       <form className="search-form" onSubmit={event => this.handleSubmit(event)}>
         <label>
               Search for:&nbsp;
-          <input name="search" value={search} onChange={this.handleSearch}/>
+          <input name="search" value={search} onChange={this.handleChangeSearch}/>
         </label>
         <button>Search</button>
       </form>

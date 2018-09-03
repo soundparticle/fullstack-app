@@ -25,9 +25,9 @@ export function search({ search }, { page }) {
   return get(`${EVERYTHING_URL}${searchTerm}${paging}`);
 }
 
-export function getMovies(id) {
+export function getAlbums(id) {
   if(id) {
-    return getUrl(`${EVERYTHING_URL}&id=${id}`);
+    return getUrl(`${EVERYTHING_URL}/masters/${id}`);
   }
   else {
     return getUrl(EVERYTHING_URL);
