@@ -25,6 +25,17 @@ class Results extends Component {
     this.searchArtists();
   }
 
+  // handleSearchArtists() {
+  //   search(artists, paging).then((artists) => {
+
+  //     console.log('***', artists);
+  //     // this.setState()
+  //   })
+  //     .catch(err => {
+  //       console.log('**** error', err);
+  //     });
+  // }
+
   componentDidUpdate({ location }) {
     const { page: oldPage } = qs.parse(location.search);
     const { search: oldSearch } = qs.parse(location.search);
