@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import qs from 'query-string';
 import Artists from './Artists';
 import Paging from '../paging/Paging';
-import { search as searchArtist } from '../../services/DiscogsApi';
+import { search as searchArtists } from '../../services/DiscogsApi';
 
 class Results extends Component {
   
@@ -22,13 +22,13 @@ class Results extends Component {
   };
 
   componentDidMount() {
-    this.searchArtist();
+    this.searchArtists();
   }
 
   componentDidUpdate({ location }) {
     const { page: oldPage } = qs.parse(location.search);
     const { search: oldSearch } = qs.parse(location.search);
-    if(oldSearch !== this.searchTerm || oldPage !== this.searchPage) this.searchArtist();
+    if(oldSearch !== this.searchTerm || oldPage !== this.searchPage) this.searchArtists();
   }
 
   handlePage = paging => {
@@ -55,7 +55,7 @@ class Results extends Component {
     return search;
   }
 
-  searchArtist() {
+  searchArtists() {
     const { perPage } = this.state;
     const page = parseInt(this.searchPage);
     const search = this.searchTerm;
@@ -66,7 +66,7 @@ class Results extends Component {
       error: null
     });
     
-    searchArtist({ search }, { page, perPage })
+    searchArtists({ search }, { page, perPage })
       .then(
         ({ Search, totalResults }) => {
           this.setState({ artists: Search, totalResults, page });
@@ -82,7 +82,7 @@ class Results extends Component {
 
   render() {
 
-    const { artist, loading, error } = this.state;
+    const { artists, loading, error } = this.state;
     const { perPage, totalResults } = this.state;
     const { searchTerm } = this;
 
@@ -107,8 +107,8 @@ class Results extends Component {
             </Fragment>
         }
         <div>
-          {artist
-            ? <Artists artist={artist}/>
+          {artists
+            ? <Artists artist={artists}/>
             : <p>Please enter your search,</p>
           }
         </div>
