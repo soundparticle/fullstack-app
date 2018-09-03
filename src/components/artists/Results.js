@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import qs from 'query-string';
 import Artists from './Artists';
 import Paging from '../paging/Paging';
-import { search as searchArtists } from '../../services/api';
+import { search as searchArtist } from '../../services/DiscogsApi';
 
 class Results extends Component {
   
   state = {
-    artists: null,
+    artist: null,
     totalResults: 0,
     perPage: 10,
     loading: false,
@@ -22,13 +22,31 @@ class Results extends Component {
   };
 
   componentDidMount() {
-    this.searchArtists();
+    this.searchArtist();
   }
 
   componentDidUpdate({ location }) {
     const { page: oldPage } = qs.parse(location.search);
     const { search: oldSearch } = qs.parse(location.search);
-    if(oldSearch !== this.SearchTerm || oldPage !== this.searchPage) this.searchArtists();
+    if(oldSearch !== this.searchTerm || oldPage !== this.searchPage) this.searchArtist();
+  }
+
+  handlePage = paging => {
+    this.setState(paging, () => {
+      const { perPage } = this.state;
+      const search = this.searchTerm;
+      const { page } = paging;
+      const { history } = this.props;
+      history.push({
+        search: qs.stringify({ search, page, perPage })
+      });
+    });
+  };
+
+  get searchPage() {
+    const { location } = this.props;
+    const { page } = qs.parse(location.search);
+    return page;
   }
 
   get searchTerm() {
@@ -36,19 +54,19 @@ class Results extends Component {
     const { search } = qs.parse(location.search);
     return search;
   }
-  // do we need paging?
-  searchArtists() {
+
+  searchArtist() {
     const { perPage } = this.state;
-    const page = this.searchTerm;
+    const page = parseInt(this.searchPage);
     const search = this.searchTerm;
     if(!search) return;
-    
-    this.setState({ 
+
+    this.setState({
       loading: true,
       error: null
     });
-
-    searchArtists({ search, }, { page, perPage })
+    
+    searchArtist({ search }, { page, perPage })
       .then(
         ({ Search, totalResults }) => {
           this.setState({ artists: Search, totalResults, page });
@@ -64,7 +82,7 @@ class Results extends Component {
 
   render() {
 
-    const { artists, loading, error } = this.state;
+    const { artist, loading, error } = this.state;
     const { perPage, totalResults } = this.state;
     const { searchTerm } = this;
 
@@ -89,8 +107,8 @@ class Results extends Component {
             </Fragment>
         }
         <div>
-          {artists
-            ? <Artists artists={artists}/>
+          {artist
+            ? <Artists artist={artist}/>
             : <p>Please enter your search,</p>
           }
         </div>
