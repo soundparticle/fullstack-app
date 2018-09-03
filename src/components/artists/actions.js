@@ -1,5 +1,5 @@
 
-import { getAllArtists  } from '../../services/api';
+import { getAllArtists  } from '../../services/DiscogsApi';
 import { ARTISTS_LOAD } from './reducers';
 
 export const loadArtists = () => dispatch => {
