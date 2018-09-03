@@ -28,7 +28,7 @@ class Results extends Component {
   componentDidUpdate({ location }) {
     const { page: oldPage } = qs.parse(location.search);
     const { search: oldSearch } = qs.parse(location.search);
-    if(oldSearch !== this.SearchTerm || oldPage !== this.searchPage) this.searchArtists();
+    if(oldSearch !== this.SearchTerm || oldPage !== this.searchPage) this.searchArtist();
   }
 
   get searchTerm() {
