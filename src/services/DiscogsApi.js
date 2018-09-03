@@ -2,7 +2,7 @@ import { get } from './request';
 const API_TOKEN = 'tPZuXrWQEtezKKbBXfVXNHeDDdDUIGtiOlGtErTv';
 const API_QUERY = `token=${API_TOKEN}`;
 const BASE_URL = 'https://api.discogs.com';
-const EVERYTHING_URL = `${BASE_URL}/database/search?${API_QUERY}`;
+const EVERYTHING_URL = `/${BASE_URL}/database/search?${API_QUERY}`;
 
 const getUrl = url => {
   const json = window.localStorage.getItem(url);

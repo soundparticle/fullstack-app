@@ -68,8 +68,8 @@ class Results extends Component {
     
     searchArtists({ search }, { page, perPage })
       .then(
-        ({ Search, totalResults }) => {
-          this.setState({ artists: Search, totalResults, page });
+        ({ Results, totalResults }) => {
+          this.setState({ artists: Results, totalResults, page });
         },
         err => {
           this.setState({ error: err.message });
@@ -85,6 +85,7 @@ class Results extends Component {
     const { artists, loading, error } = this.state;
     const { perPage, totalResults } = this.state;
     const { searchTerm } = this;
+    console.log(artists);
 
     return (  
       <section>
@@ -108,7 +109,7 @@ class Results extends Component {
         }
         <div>
           {artists
-            ? <Artists artist={artists}/>
+            ? <Artists artists={artists}/>
             : <p>Please enter your search,</p>
           }
         </div>
