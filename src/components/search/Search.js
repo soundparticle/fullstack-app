@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // import './Search.css';
 
 class Search extends Component {
-
+  
   state = {
     search: ''
   };
@@ -32,29 +32,22 @@ class Search extends Component {
     });
   };
 
-  handleChangeSearch = ({ target }) => {
+  handleSearch = ({ target }) => {
     this.setState({ search: target.value });
   };
 
-  
   render() {
     const { search } = this.state;
 
     return (
-      <form onSubmit={event => this.handleSubmit(event)}>
+      <form className="search-form" onSubmit={event => this.handleSubmit(event)}>
         <label>
-          Search for Music: &nbsp;
-          <p>Title:
-            <input name="title" value={search} onChange={this.handleSearch}/>
-          </p>
-          <p>Artist:
-            <input name="artist" value={search} onChange={this.handleSearch}/>
-          </p>
+              Search for:&nbsp;
+          <input name="search" value={search} onChange={this.handleSearch}/>
         </label>
         <button>Search</button>
       </form>
     );
   }
 }
-
 export default Search;
