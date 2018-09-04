@@ -94,9 +94,9 @@ class Results extends Component {
             {loading && <div>Loading...</div>}
             {error && <div>{error}</div>}      
           </section>
-              }
+        }
 
-              {searchTerm &&
+        {searchTerm &&
             <Fragment>
               <p>Searching for &quot;{searchTerm}&quot;</p>
               <Paging
@@ -106,26 +106,16 @@ class Results extends Component {
                 onPage={this.handlePage}
               />
             </Fragment>
-              }
-              <div>
-                {artists
-                  ? <Artists artists={artists}/>
-                  : <p>Please enter your search</p>
-                }
-              </div>
-            </section>
-          );
         }
         <div>
           {artists
             ? <Artists artists={artists}/>
-            : <p>Please enter your search,</p>
+            : <p>Please enter your search</p>
           }
         </div>
       </section>
     );
-  }
-
+  }   
 }
 
 export default Results;
