@@ -8,7 +8,7 @@ import { search as searchArtists } from '../../services/DiscogsApi';
 class Results extends Component {
   
   state = {
-    artist: null,
+    artists: null,
     totalResults: 0,
     perPage: 10,
     loading: false,
@@ -68,8 +68,8 @@ class Results extends Component {
     
     searchArtists({ search }, { page, perPage })
       .then(
-        ({ Results, totalResults }) => {
-          this.setState({ artists: Results, totalResults, page });
+        ({ results, totalResults }) => {
+          this.setState({ artists: results, totalResults, page });
         },
         err => {
           this.setState({ error: err.message });
