@@ -24,7 +24,7 @@ class Results extends Component {
   componentDidMount() {
     this.searchArtists();
   }
-
+        
   componentDidUpdate({ location }) {
     const { page: oldPage } = qs.parse(location.search);
     const { search: oldSearch } = qs.parse(location.search);
@@ -94,9 +94,9 @@ class Results extends Component {
             {loading && <div>Loading...</div>}
             {error && <div>{error}</div>}      
           </section>
-        }
+              }
 
-        {searchTerm &&
+              {searchTerm &&
             <Fragment>
               <p>Searching for &quot;{searchTerm}&quot;</p>
               <Paging
@@ -106,6 +106,15 @@ class Results extends Component {
                 onPage={this.handlePage}
               />
             </Fragment>
+              }
+              <div>
+                {artists
+                  ? <Artists artists={artists}/>
+                  : <p>Please enter your search</p>
+                }
+              </div>
+            </section>
+          );
         }
         <div>
           {artists
@@ -116,6 +125,7 @@ class Results extends Component {
       </section>
     );
   }
+
 }
 
 export default Results;
