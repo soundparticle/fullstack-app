@@ -9,7 +9,7 @@ class Results extends Component {
   
   state = {
     artists: null,
-    totalResults: 0,
+    items: 0,
     perPage: 10,
     loading: false,
     error: null
@@ -68,8 +68,8 @@ class Results extends Component {
     
     searchArtists({ search }, { page, perPage })
       .then(
-        ({ results, totalResults }) => {
-          this.setState({ artists: results, totalResults, page });
+        ({ results, pagination }) => {
+          this.setState({ artists: results, items: pagination.items, page });
         },
         err => {
           this.setState({ error: err.message });
@@ -83,9 +83,9 @@ class Results extends Component {
   render() {
 
     const { artists, loading, error } = this.state;
-    const { perPage, totalResults } = this.state;
+    const { perPage, items } = this.state;
     const { searchTerm } = this;
-    console.log(artists);
+    console.log('#########', items);
 
     return (  
       <section>
@@ -102,7 +102,7 @@ class Results extends Component {
               <Paging
                 page={+this.searchPage}
                 perPage={perPage}
-                totalResults={parseInt(totalResults)}
+                items={parseInt(items)}
                 onPage={this.handlePage}
               />
             </Fragment>
