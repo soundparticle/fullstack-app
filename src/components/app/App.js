@@ -4,7 +4,7 @@ import Header from '../Header';
 import Home from '../home/Home';
 // import Artists from '../artists/Artists';
 import Results from '../artists/Results';
-// import ArtistDetail from '../artists/ArtistDetail';
+import ArtistDetail from '../artists/ArtistDetail';
 // import Favorites from '../favorites/Favorites';
 
 // import './App.css';
@@ -32,7 +32,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home}/>
               <Route exact path="/search" component={Results}/>
-              {/* <Route exact path="/artist/:id" component={ArtistDetail}/>  */}
+              <Route exact path="/artist/:id" component={ArtistDetail}/> 
               {/* <Route exact path="/favorites" component={Favorites}/> */}
               <Redirect to="/"/>
             </Switch>

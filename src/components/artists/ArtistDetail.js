@@ -9,11 +9,11 @@ export default class Artist extends Component {
     artist: null,
     favorite: null
   };
-
+  
   static propTypes = {    
     match: PropTypes.object.isRequired
   };
-
+  
   componentDidMount() {
     const { id } = this.props.match.params;
     getArtists(id)
@@ -28,11 +28,11 @@ export default class Artist extends Component {
       })
       .catch(console.log);
   }
-
+  
   handleClick = () => {
     const { artist, favorite } = this.state;
     const isFavorite = !!favorite;
-
+    
     if(isFavorite) {
       removeFavorite(artist.artist_id)
         .then(() => {
@@ -48,8 +48,10 @@ export default class Artist extends Component {
         .catch(console.log);
     }
   };
-
+  
   render() {
+    
+    // console.log('**** data here ****', this.state);
     const { artist, favorite } = this.state;
     if(!artist) return null;
 

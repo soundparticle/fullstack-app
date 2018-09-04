@@ -12,8 +12,7 @@ class Header extends Component {
       <div className={styles.header}>  
 
         <section className="header-container">
-          <div className="discodog"><img src={discodog}/>
-            <h1>Artists</h1>
+          <div><img className="discodog" src={discodog}/>
           </div> 
           <nav>
             <ul>
