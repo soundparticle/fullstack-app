@@ -22,9 +22,9 @@ class Header extends Component {
               <li>
                 <Link to="/favorites">Favorites</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/search">Search Music</Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </section> 
