@@ -7,7 +7,7 @@ import { loadArtists } from './actions';
 import { ARTISTS_LOAD } from './reducers';
 import { getAllArtists } from '../../services/DiscogsApi';
 
-describe('Album Actions', () => {
+describe('Artist Actions', () => {
   
   it('Loads Artists', async() => {
     const dispatch = jest.fn();
