@@ -1,36 +1,47 @@
 /* eslint-env node */
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { resolve } = require('path');
+const CleanPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const buildDir = 'docs';
-const path = `${__dirname}/${buildDir}`;
+const path = resolve(__dirname, buildDir);
 
 module.exports = {
+  // start here
   entry: './src/index.js',
+  // put the build output here (not dev server)
   output: {
     path,
     filename: 'bundle.[hash].js',
     publicPath: '/'
   },
+  // mode (will eventually be cmd line arg in package.json scripts)
+  mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
-    contentBase: './${buildDir}',
+    contentBase: `./${buildDir}`,
     historyApiFallback: true,
   },
-  devtool: 'inline-source-map',
   plugins: [
-    new CleanWebpackPlugin(`${path}/bundle.*.js`), 
-    new HtmlPlugin({ template: './src/index.html' })
+    // add plugins
+    new CleanPlugin(`${path}/bundle.*.js`),
+    new HtmlPlugin({ template: './src/index.html' }),
+    // new CopyWebpackPlugin([{ from: './src/sprites', to: 'sprites' }])
   ],
   module: {
     rules: [
-      {   
+      // js
+      {
         test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: { cacheDirectory: true }
+        }
       },
 
-
-
+      // css
       {
         test: /\.css$/,
         use: [
@@ -51,6 +62,8 @@ module.exports = {
           }
         ]
       },
+
+      // images
       {
         test: /\.(jpg|png|svg)$/,
         use: {
