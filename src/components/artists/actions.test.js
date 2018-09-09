@@ -1,18 +1,18 @@
-jest.mock('../../services/DiscogsApi', () => ({
-  getAllArtists: jest.fn(),
-  // postAlbum: jest.fn()
+jest.mock('../../services/favoritesApi', () => ({
+  getAlbums: jest.fn(),
+  postAlbum: jest.fn()
 }));
 
-import { loadArtists } from './actions';
-import { ARTISTS_LOAD } from './reducers';
-import { getAllArtists } from '../../services/DiscogsApi';
+import { loadAlbums } from './actions';
+import { ALBUMS_LOAD } from './reducers';
+import { getAlbums } from '../../services/favoritesApi';
 
-describe('Artist Actions', () => {
+describe('Album Actions', () => {
   
-  it('Loads Artists', async() => {
+  it('Loads Albums', async() => {
     const dispatch = jest.fn();
     const getState = jest.fn();
-    await loadArtists()(dispatch, getState);
-    expect(dispatch).toBeCalledWith({ type: ARTISTS_LOAD, payload: getAllArtists() });
+    await loadAlbums()(dispatch, getState);
+    expect(dispatch).toBeCalledWith({ type: ALBUMS_LOAD, payload: getAlbums() });
   });
 });

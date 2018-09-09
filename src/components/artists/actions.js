@@ -1,10 +1,10 @@
 
-import { getAllArtists  } from '../../services/DiscogsApi';
-import { ARTISTS_LOAD } from './reducers';
+import { getAlbums  } from '../../services/favoritesApi';
+import { ALBUMS_LOAD } from './reducers';
 
-export const loadArtists = () => dispatch => {
+export const loadAlbums = () => dispatch => {
   dispatch({
-    type: ARTISTS_LOAD,
-    payload: getAllArtists()
+    type: ALBUMS_LOAD,
+    payload: getAlbums()
   });
 };

@@ -1,6 +1,6 @@
 import { put, get, del } from './request';
 
-const URL = 'https://react-search-e534c.firebaseio.com/';
+const URL = 'https://localhost:27017/disco-dogs';
 const FAVORITES_URL = `${URL}/favorites`;
 
 const getFavoriteUrl = id => `${FAVORITES_URL}/id-${id}.json`;

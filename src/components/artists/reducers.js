@@ -1,13 +1,13 @@
-export const ARTISTS_LOAD = 'ARTISTS_LOAD';
+export const ALBUMS_LOAD = 'ALBUMS_LOAD';
 // export const ARTIST_ADD = 'ARTIST_ADD';
 
 
-export const getArtists = state => state.artists;
+export const getAlbums = state => state.albums;
 // export const getImagesByArtist = state => state.images;
 
-export function artists(state = [], { type, payload }) {
+export function albums(state = [], { type, payload }) {
   switch(type) {
-    case ARTISTS_LOAD: 
+    case ALBUMS_LOAD: 
       return payload;
     
     default:
