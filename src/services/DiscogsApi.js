@@ -25,9 +25,9 @@ export function search({ search }, { page }) {
   return get(`${EVERYTHING_URL}${searchTerm}${paging}`);
 }
 
-export function getAlbums(id) {
-  if(id) {
-    return getUrl(`${EVERYTHING_URL}/album/${id}`);
+export function getAlbums(release_id) {
+  if(release_id) {
+    return getUrl(`${BASE_URL}/releases/${release_id}?${API_QUERY}`);
   }
   else {
     return getUrl(EVERYTHING_URL);

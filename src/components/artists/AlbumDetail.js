@@ -55,11 +55,11 @@ export default class Album extends Component {
     const { album, favorite } = this.state;
     if(!album) return null;
 
-    const { title, year, cover_image } = album;
+    const { title, year, images } = album;
 
     return (
       <div>
-        <img src={cover_image}/>
+        <img src={images[0].resource_url}/>
         <h2>{title}</h2>
         <p><strong>Released:</strong> {year}</p>
         <button onClick={this.handleClick}>
