@@ -19,13 +19,13 @@ class Favorites extends Component {
 
   render() {
     const { favorites } = this.state;
-    if(!favorites) return (<h2>Favorite Artists</h2>);
+    if(!favorites) return (<h2>Favorite Albums</h2>);
 
     return (
       <div>
         <ul>
           {favorites.map(favorite => {
-            return <Favorite key={favorite.id} artist={favorite}/>;
+            return <Favorite key={favorite.id} album={favorite}/>;
           })}
         </ul>
       </div>

@@ -55,12 +55,13 @@ export default class Album extends Component {
     const { album, favorite } = this.state;
     if(!album) return null;
 
-    const { title, year, images } = album;
+    const { title, year, images, id } = album;
 
     return (
       <div>
         <img src={images[0].resource_url}/>
         <h2>{title}</h2>
+        <h2>{id}</h2>
         <p><strong>Released:</strong> {year}</p>
         <button onClick={this.handleClick}>
           {favorite ? 'Remove from' : 'Add to' } Favorites
