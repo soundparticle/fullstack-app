@@ -1,13 +1,13 @@
-import { put, get, del } from './request';
+import { post, get, del } from './request';
 
 const URL = 'https://localhost:27017/disco-dogs';
 const FAVORITES_URL = `${URL}/favorites`;
 
-const getFavoriteUrl = id => `${FAVORITES_URL}/id-${id}.json`;
+const getFavoriteUrl = id => `${FAVORITES_URL}/${id}`;
 
 export const addFavorite = ({ id, title, year, images }) => {
   const url = getFavoriteUrl(id);
-  return put(url, {
+  return post(url, {
     id,
     title,
     year,
@@ -16,7 +16,7 @@ export const addFavorite = ({ id, title, year, images }) => {
 };
 
 export const getFavorites = () => {
-  return get(`${FAVORITES_URL}.json`)
+  return get(`${FAVORITES_URL}`)
     .then(res => {
       return Object.keys(res)
         .map(key => res[key]);
