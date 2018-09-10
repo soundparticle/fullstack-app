@@ -3,9 +3,9 @@ jest.mock('../../services/favoritesApi', () => ({
   postAlbum: jest.fn()
 }));
 
-import { loadAlbums } from './actions';
-import { ALBUMS_LOAD } from './reducers';
-import { getAlbums } from '../../services/favoritesApi';
+import { loadAlbums, addAlbum } from './actions';
+import { ALBUMS_LOAD, ALBUM_ADD } from './reducers';
+import { getAlbums, postAlbum } from '../../services/favoritesApi';
 
 describe('Album Actions', () => {
   
@@ -14,5 +14,12 @@ describe('Album Actions', () => {
     const getState = jest.fn();
     await loadAlbums()(dispatch, getState);
     expect(dispatch).toBeCalledWith({ type: ALBUMS_LOAD, payload: getAlbums() });
+  });
+
+  it('Adds Album', async() => {
+    const dispatch = jest.fn();
+    const getState = jest.fn();
+    await addAlbum({ title: 'album' })(dispatch, getState);
+    expect(dispatch).toBeCalledWith({ type: ALBUM_ADD, payload: postAlbum({ title: 'album' }) });
   });
 });
