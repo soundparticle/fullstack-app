@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getAlbums } from '../../services/DiscogsApi';
-import { addFavorite, getFavorite, removeFavorite } from '../../services/favoritesApi';
+import { postFavorite, /* removeFavorite */ } from '../../services/favoritesApi';
 
 export default class Album extends Component {
   
@@ -22,51 +22,52 @@ export default class Album extends Component {
       })
       .catch(console.log);
     
-    getFavorite(id)
-      .then(favorite => {
-        this.setState({ favorite });
-      })
-      .catch(console.log);
+    // getFavorite(id)
+    //   .then(favorite => {
+    //     this.setState({ favorite });
+    //   })
+    //   .catch(console.log);
   }
-  
-  handleClick = () => {
-    const { album, favorite } = this.state;
-    const isFavorite = !!favorite;
     
-    if(isFavorite) {
-      removeFavorite(album.id)
-        .then(() => {
-          this.setState({ favorite: null });
-        })
-        .catch(console.log);
-    }
-    else {
-      addFavorite(this.state.album)
+    handleClick = () => {
+      // const { album, favorite } = this.state;
+      // const isFavorite = !!favorite;
+      
+      // if(isFavorite) {
+      //   removeFavorite(album.id)
+      //     .then(() => {
+      //       this.setState({ favorite: null });
+      //     })
+      //     .catch(console.log);
+      // }
+      /*else {*/
+      postFavorite(this.state.album)
         .then(favorite => {
           this.setState({ favorite });
         })
         .catch(console.log);
-    }
-  };
-  
-  render() {
+        /*}*/
+      // console.log('*** album', album);
+    };
     
-    // console.log('**** data here ****', this.state);
-    const { album, favorite } = this.state;
-    if(!album) return null;
+    render() {
+      
+      // console.log('**** data here ****', this.state);
+      const { album, favorite } = this.state;
+      if(!album) return null;
 
-    const { title, year, images, id } = album;
+      const { title, year, images, id } = album;
 
-    return (
-      <div>
-        <img src={images[0].resource_url}/>
-        <h2>{title}</h2>
-        <h2>{id}</h2>
-        <p><strong>Released:</strong> {year}</p>
-        <button onClick={this.handleClick}>
-          {favorite ? 'Remove from' : 'Add to' } Favorites
-        </button>
-      </div>
-    );
-  }
+      return (
+        <div>
+          <img src={images[0].resource_url}/>
+          <h2>{title}</h2>
+          <h2>{id}</h2>
+          <p><strong>Released:</strong> {year}</p>
+          <button onClick={this.handleClick}>
+            {favorite ? 'Remove from' : 'Add to' } Favorites
+          </button>
+        </div>
+      );
+    }
 }

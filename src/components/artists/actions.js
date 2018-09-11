@@ -1,17 +1,17 @@
 
-import { getAlbums, postAlbum  } from '../../services/favoritesApi';
-import { ALBUMS_LOAD, ALBUM_ADD } from './reducers';
+import { getFavorites, postFavorite  } from '../../services/favoritesApi';
+import { FAVORITES_LOAD, FAVORITES_ADD } from './reducers';
 
-export const loadAlbums = () => dispatch => {
+export const loadFavorites = () => dispatch => {
   dispatch({
-    type: ALBUMS_LOAD,
-    payload: getAlbums()
+    type: FAVORITES_LOAD,
+    payload: getFavorites()
   });
 };
 
-export const addAlbum = (album) => dispatch => {
+export const addFavorite = (album) => dispatch => {
   dispatch({
-    type: ALBUM_ADD,
-    payload: postAlbum(album)
+    type: FAVORITES_ADD,
+    payload: postFavorite(album)
   });
 };

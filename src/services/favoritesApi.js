@@ -1,18 +1,14 @@
-import { post, get, del } from './request';
+import { post, get, /*del*/ } from './request';
 
-const URL = 'https://localhost:27017/disco-dogs';
+const URL = '/api';
 const FAVORITES_URL = `${URL}/favorites`;
 
-const getFavoriteUrl = id => `${FAVORITES_URL}/${id}`;
+const getFavoriteUrl = FAVORITES_URL;
 
-export const addFavorite = ({ id, title, year, images }) => {
-  const url = getFavoriteUrl(id);
-  return post(url, {
-    id,
-    title,
-    year,
-    images,
-  });
+export const postFavorite = album => {
+  const url = getFavoriteUrl;
+  console.log('**** album', album);
+  return post(url, album);
 };
 
 export const getFavorites = () => {
@@ -23,12 +19,13 @@ export const getFavorites = () => {
     });
 };
 
-export const getFavorite = id => {
-  const url = getFavoriteUrl(id);
-  return get(url);
-};
+// export const getFavorite = id => {
+//   const url = getFavoriteUrl(id);
+//   console.log('**** url', url);
+//   return get(url);
+// };
 
-export const removeFavorite = id => {
-  const url = getFavoriteUrl(id);
-  return del(url);
-};
+// export const removeFavorite = id => {
+//   const url = getFavoriteUrl(id);
+//   return del(url);
+// };

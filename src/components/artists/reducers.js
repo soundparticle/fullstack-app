@@ -1,14 +1,14 @@
-export const ALBUMS_LOAD = 'ALBUMS_LOAD';
-export const ALBUM_ADD = 'ALBUM_ADD';
+export const FAVORITES_LOAD = 'FAVORITES_LOAD';
+export const FAVORITE_ADD = 'FAVORITE_ADD';
 
 
-export const getAlbums = state => state.albums;
+export const getFavorites = state => state.favorites;
 
-export function albums(state = [], { type, payload }) {
+export function favorites(state = [], { type, payload }) {
   switch(type) {
-    case ALBUMS_LOAD: 
+    case FAVORITES_LOAD: 
       return payload;
-    case ALBUM_ADD:
+    case FAVORITE_ADD:
       return [...state, payload];
     default:
       return state;

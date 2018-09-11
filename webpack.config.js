@@ -22,6 +22,7 @@ module.exports = {
   devServer: {
     contentBase: `./${buildDir}`,
     historyApiFallback: true,
+    proxy: { '/api': 'http://localchost:3000' }
   },
   plugins: [
     // add plugins
