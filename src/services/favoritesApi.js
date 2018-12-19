@@ -1,13 +1,13 @@
-import { post, get, /*del*/ } from './request';
+import { post, get, del } from './request';
 
 const URL = '/api';
 const FAVORITES_URL = `${URL}/favorites`;
 
-const getFavoriteUrl = FAVORITES_URL;
+const getAlbumUrl = FAVORITES_URL;
+const getFavoriteUrl = id => `${FAVORITES_URL}/${id}`;
 
 export const postFavorite = album => {
-  const url = getFavoriteUrl;
-  console.log('**** album', album);
+  const url = getAlbumUrl;
   return post(url, album);
 };
 
@@ -19,13 +19,13 @@ export const getFavorites = () => {
     });
 };
 
-// export const getFavorite = id => {
-//   const url = getFavoriteUrl(id);
-//   console.log('**** url', url);
-//   return get(url);
-// };
+export const getFavorite = id => {
+  const url = getFavoriteUrl(id);
+  console.log('**** url', url);
+  return get(url);
+};
 
-// export const removeFavorite = id => {
-//   const url = getFavoriteUrl(id);
-//   return del(url);
-// };
+export const removeFavorite = id => {
+  const url = getFavoriteUrl(id);
+  return del(url);
+};

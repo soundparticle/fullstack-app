@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getAlbums } from '../../services/DiscogsApi';
-import { postFavorite, /* removeFavorite */ } from '../../services/favoritesApi';
+import { postFavorite, getFavorite, removeFavorite  } from '../../services/favoritesApi';
 
 export default class Album extends Component {
   
@@ -22,31 +22,31 @@ export default class Album extends Component {
       })
       .catch(console.log);
     
-    // getFavorite(id)
-    //   .then(favorite => {
-    //     this.setState({ favorite });
-    //   })
-    //   .catch(console.log);
+    getFavorite(id)
+      .then(favorite => {
+        this.setState({ favorite });
+      })
+      .catch(console.log);
   }
     
     handleClick = () => {
-      // const { album, favorite } = this.state;
-      // const isFavorite = !!favorite;
+      const { album, favorite } = this.state;
+      const isFavorite = !!favorite;
       
-      // if(isFavorite) {
-      //   removeFavorite(album.id)
-      //     .then(() => {
-      //       this.setState({ favorite: null });
-      //     })
-      //     .catch(console.log);
-      // }
-      /*else {*/
-      postFavorite(this.state.album)
-        .then(favorite => {
-          this.setState({ favorite });
-        })
-        .catch(console.log);
-        /*}*/
+      if(isFavorite) {
+        removeFavorite(album.id)
+          .then(() => {
+            this.setState({ favorite: null });
+          })
+          .catch(console.log);
+      }
+      else {
+        postFavorite(this.state.album)
+          .then(favorite => {
+            this.setState({ favorite });
+          })
+          .catch(console.log);
+      }
       // console.log('*** album', album);
     };
     
