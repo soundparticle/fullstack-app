@@ -47,12 +47,10 @@ export default class Album extends Component {
           })
           .catch(console.log);
       }
-      // console.log('*** album', album);
     };
     
     render() {
       
-      // console.log('**** data here ****', this.state);
       const { album, favorite } = this.state;
       if(!album) return null;
 
